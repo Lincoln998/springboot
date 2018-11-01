@@ -1,0 +1,51 @@
+server:
+  port: 80
+  session-timeout: 60
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+
+logging:
+  level.com.lincan.mybatisreadwrite.dao: debug
+mysql:
+    datasource:
+        readSize: 1  #读库个数
+        type: com.alibaba.druid.pool.DruidDataSource
+        write:
+           url: jdbc:mysql://101.132.40.175:3306/write?useUnicode=true&characterEncoding=utf-8
+           username: root
+           password: 123456
+           driver-class-name: com.mysql.cj.jdbc.Driver
+           minIdle: 5
+           maxActive: 100
+           initialSize: 10
+           maxWait: 60000
+           timeBetweenEvictionRunsMillis: 60000
+           minEvictableIdleTimeMillis: 300000
+           validationQuery: select 'x'
+           testWhileIdle: true
+           testOnBorrow: false
+           testOnReturn: false
+           poolPreparedStatements: true
+           maxPoolPreparedStatementPerConnectionSize: 50
+           removeAbandoned: true
+           filters: stat
+        read:
+           url: jdbc:mysql://101.132.40.175:3306/read?useUnicode=true&characterEncoding=utf-8
+           username: root
+           password: root
+           driver-class-name: com.mysql.cj.jdbc.Driver
+           minIdle: 5
+           maxActive: 100
+           initialSize: 10
+           maxWait: 60000
+           timeBetweenEvictionRunsMillis: 60000
+           minEvictableIdleTimeMillis: 300000
+           validationQuery: select 'x'
+           testWhileIdle: true
+           testOnBorrow: false
+           testOnReturn: false
+           poolPreparedStatements: true
+           maxPoolPreparedStatementPerConnectionSize: 50
+           removeAbandoned: true
+           filters: stat
