@@ -2,7 +2,7 @@ package com.lincan.mybatisreadwrite.config;
 
 public enum DataSourceType {
 
-	read("read", "读库"),
+	read("read", "读库1"),
 	write("write", "写库");
 	
     private String type;
