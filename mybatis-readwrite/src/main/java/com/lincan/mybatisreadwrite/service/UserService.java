@@ -9,4 +9,6 @@ import com.lincan.mybatisreadwrite.entity.User;
 public interface UserService {
 
     User select();
+
+    int insert();
 }

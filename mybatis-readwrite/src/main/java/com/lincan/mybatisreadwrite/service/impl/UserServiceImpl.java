@@ -20,4 +20,9 @@ public class UserServiceImpl implements UserService {
     public User select() {
         return userDAO.select();
     }
+
+    @Override
+    public int insert() {
+        return userDAO.insert();
+    }
 }

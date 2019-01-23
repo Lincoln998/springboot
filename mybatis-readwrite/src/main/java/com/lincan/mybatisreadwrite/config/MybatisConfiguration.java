@@ -39,12 +39,15 @@ public class MybatisConfiguration {
 	@Autowired
 	@Qualifier("readDataSource")
 	private DataSource readDataSource;
+	@Autowired
+    private DataSourceInterceptor interceptor;
 
     @Bean(name="sqlSessionFactory")
     public SqlSessionFactory sqlSessionFactorys() throws Exception {
         log.info("--------------------  sqlSessionFactory init ---------------------");
         try {
             SqlSessionFactoryBean sessionFactoryBean = new SqlSessionFactoryBean();
+            sessionFactoryBean.setPlugins(new Interceptor[]{interceptor});
             sessionFactoryBean.setDataSource(roundRobinDataSouceProxy());
             // 读取配置
             return sessionFactoryBean.getObject();
@@ -117,7 +120,7 @@ public class MybatisConfiguration {
     //事务管理
     @Bean
     public PlatformTransactionManager annotationDrivenTransactionManager() {
-        return new DataSourceTransactionManager((DataSource)SpringContextUtil.getBean("roundRobinDataSouceProxy"));
+        return new DataSourceTransactionManager(writeDataSource);
     }
     
 }
