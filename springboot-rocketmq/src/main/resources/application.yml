@@ -1,0 +1,9 @@
+apache:
+  rocketmq:
+#消费者的配置
+    consumer:
+      pushConsumer: XiaourPushConsumer
+#生产者的配置
+    producer:
+      producerGroup: lincan
+    namesrvAddr: 101.132.40.175:9876

@@ -18,11 +18,11 @@ import java.util.Date;
 @RestController
 public class Applaction {
     private static final Logger LOGGER = LoggerFactory.getLogger(Applaction.class);
+    private static final Logger LOG = LoggerFactory.getLogger("testApender");
 
     /**
      * 获取配置文件中的属性值
      */
-    @Value("${app.name}")
     private String projectName;
 
     @RequestMapping("/")
@@ -31,7 +31,7 @@ public class Applaction {
             logback.xml中指定的默认输出级别为INFO，所以低于INFO级别(DEBUG、TRACE)的日志不会输出
             级别排序为： TRACE < DEBUG < INFO < WARN < ERROR
          */
-        LOGGER.info("{} -- This is a primary with logback., Current time {}.", projectName, new Date());
+        LOGGER.info("{} -- This is a primary with logback., Current time {}.", new Date());
         LOGGER.trace("This level is TRACE.");
         LOGGER.debug("This level is DEBUG.");
         LOGGER.debug("This level is DEBUG.", LOGGER.isDebugEnabled());
@@ -39,10 +39,20 @@ public class Applaction {
         LOGGER.info("isInfoEnabled:" + LOGGER.isInfoEnabled());
         LOGGER.warn("This level is WARN.");
         LOGGER.error("This level is ERROR.");
+        LOG.info("自定义appender");
         return "logback.";
     }
 
     public static void main(String[] args) throws Exception {
         SpringApplication.run(Applaction.class, args);
+        LOGGER.info("{} -- This is a primary with logback., Current time {}.", new Date());
+        LOGGER.trace("This level is TRACE.");
+        LOGGER.debug("This level is DEBUG.");
+        LOGGER.debug("This level is DEBUG.", LOGGER.isDebugEnabled());
+        LOGGER.info("This level is INFO.");
+        LOGGER.info("isInfoEnabled:" + LOGGER.isInfoEnabled());
+        LOGGER.warn("This level is WARN.");
+        LOGGER.error("This level is ERROR.");
+        LOG.info("自定义appender");
     }
 }

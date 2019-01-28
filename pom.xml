@@ -29,6 +29,8 @@
         <module>springboot-interceptor</module>
         <module>springboot-validator</module>
 		<module>springboot-websocket</module>
+		<module>lombok</module>
+		<module>springboot-rocketmq</module>
     </modules>
 
 	<parent>

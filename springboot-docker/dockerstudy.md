@@ -8,7 +8,7 @@
 docker --version
 docker info
 #构建命令(-t 指定一个名称)
-docker build -t name
+docker build -t name.
 # 重启docker服务
 sudo service docker restart
 # 运行该应用程序，将您的机器的4000端口映射到container发布的80端口
